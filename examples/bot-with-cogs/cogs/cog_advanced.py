@@ -21,7 +21,7 @@ class MyAdvancedCog(commands.Cog):
             _channel = channel
         
         link = await self.bot.vcactivity.get_link(
-            ctx.author.voice.channel, VCApplication.youtube, max_age=0, max_uses=10)
+            _channel, VCApplication.youtube, max_age=0, max_uses=10)
         await ctx.send(link)
 
     @custom_link.error

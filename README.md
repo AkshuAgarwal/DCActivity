@@ -140,7 +140,7 @@ bot.run('token')
                   _channel = channel
               
               link = await self.bot.dcactivity.create_link(
-                  ctx.author.voice.channel, DCApplication.youtube, max_age=0, max_uses=10)
+                  _channel, DCApplication.youtube, max_age=0, max_uses=10)
               await ctx.send(link)
 
           @custom_link.error
