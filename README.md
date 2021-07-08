@@ -1,4 +1,4 @@
-# VCActivity
+# DCActivity
 An unofficial module used to access Discord's Beta features like YouTube, Poker Night, etc. by your Bot
 
 <br>
@@ -10,46 +10,45 @@ An unofficial module used to access Discord's Beta features like YouTube, Poker 
 To install the library, simply run the following command in your terminal:
 ```
 # Windows
-py -m pip install vcactivity
+py -m pip install dcactivity
 
 # Linux/macOS
-python3 -m pip install vcactivity
+python3 -m pip install dcactivity
 ```
 
 <br>
 
 # Usage
-To use the library, you must first import it into your script and create a new instance of the VCActivity class:
+To use the library, you must first import it into your script and create a new instance of the DCActivity class:
 ```python
 from discord.ext import commands
-from vcactivity import VCActivity
+from dcactivity import DCActivity
 
 bot = commands.Bot(command_prefix='!')
-bot.vcact = VCActivity(bot)
+bot.dcact = DCActivity(bot)
 ```
 
 To create the invite link, you need to use create_link() function:
 ```py
 
-link = await bot.vcact.create_link(voice_channel, app_id)
+link = await bot.dcact.create_link(voice_channel, app_id)
 ```
 
 * voice_channel: The Voice channel you want to create the invite link for. Can be Channel ID or discord.VoiceChannel object
  
-* app_id: The Application ID of the VC game. For this, you need to follow either of the three steps:
+* app_id: The Application ID of the Voice Channel game. For this, you need to follow either of the three steps:
    
-  * Import VCApplication from vcactivity:
+  * Import DCApplication from dcactivity:
     ```python
-    from vcactivity import VCApplication
+    from dcactivity import DCApplication
 
-    link = await bot.vcact.create_link(voice_channel, VCApplication.youtube) # or VCApplication.poker, etc.
+    link = await bot.dcact.create_link(voice_channel, DCApplication.youtube) # or DCApplication.poker, etc.
     ```
 
   * Directly use Application Name or ID (use ID only if you know the exact ID of an activity):
     ```python
-    link = await bot.vcact.create_link(voice_channel, 'youtube') # or poker, chess, etc.
+    link = await bot.dcact.create_link(voice_channel, 'youtube') # or poker, chess, etc.
     ```
-
 
 
 # Examples
@@ -59,14 +58,14 @@ link = await bot.vcact.create_link(voice_channel, app_id)
 
 from discord import VoiceChannel
 from discord.ext import commands
-from vcactivity import VCActivity, VCApplication
+from dcactivity import DCActivity, DCApplication
 
 bot = commands.Bot(command_prefix='!')
-vcactivity = VCActivity(bot) # or "bot.vcactivity = VCActivity(bot)" to use it as a BotVar
+dcactivity = DCActivity(bot) # or "bot.dcactivity = DCActivity(bot)" to use it as a BotVar
 
 @bot.command()
 async def youtube(ctx, channel: VoiceChannel):
-    link = await vcactivity.get_link(channel, VCApplication.youtube)
+    link = await dcactivity.get_link(channel, DCApplication.youtube)
     await ctx.send(link)
 
 bot.run('token')
@@ -81,10 +80,10 @@ bot.run('token')
 
       from discord import VoiceChannel
       from discord.ext import commands
-      from vcactivity import VCActivity
+      from dcactivity import DCActivity
 
       bot = commands.Bot(command_prefix='!')
-      bot.vcactivity = VCActivity(bot)
+      bot.dcactivity = DCActivity(bot)
 
       bot.load_extension('cogs.cog') # Simple Example with Cog
       bot.load_extension('cogs.cog_advanced') # Advanced Example with Cog
@@ -98,7 +97,7 @@ bot.run('token')
 
       from discord import VoiceChannel
       from discord.ext import commands
-      from vcactivity import VCApplication
+      from dcactivity import DCApplication
 
 
       class MyCog(commands.Cog):
@@ -107,7 +106,7 @@ bot.run('token')
           
           @commands.command()
           async def youtube(self, ctx, channel: VoiceChannel):
-              link = await self.bot.vcactivity.get_link(channel, VCApplication.youtube)
+              link = await self.bot.dcactivity.get_link(channel, DCApplication.youtube)
               await ctx.send(link)
 
       def setup(bot):
@@ -121,8 +120,8 @@ bot.run('token')
       from typing import Optional
       from discord import VoiceChannel
       from discord.ext import commands
-      from vcactivity import VCApplication
-      from vcactivity.errors import InvalidChannel
+      from dcactivity import DCApplication
+      from dcactivity.errors import InvalidChannel
 
 
       class MyAdvancedCog(commands.Cog):
@@ -140,8 +139,8 @@ bot.run('token')
               else:
                   _channel = channel
               
-              link = await self.bot.vcactivity.get_link(
-                  ctx.author.voice.channel, VCApplication.youtube, max_age=0, max_uses=10)
+              link = await self.bot.dcactivity.get_link(
+                  ctx.author.voice.channel, DCApplication.youtube, max_age=0, max_uses=10)
               await ctx.send(link)
 
           @custom_link.error
@@ -157,7 +156,7 @@ bot.run('token')
 <br>
 
 # Note
-* A minimum of one person needs to click on the invite link to start the VC Activity.
+* A minimum of one person needs to click on the invite link to start the Voice Channel Activity.
 * Activity resets when everyone exits. Though it can again be joined from the same link but from the starting and not resuming.
 * Games like chess/betrayal may not work in Stable Client for now. To use them, you need install [Discord PTB](https://ptb.discord.com/) or [Discord Canary](https://canary.discord.com/) Client or use them in the web browser.
 
@@ -168,9 +167,9 @@ This package is licensed under MIT License. Any contributions are welcomed.
 
 Need to contribute? Just Open a Pull Request with your changes and some information about your changes.
 
-Found a bug or having an issue? Open an Issue at [Github](https://github.com/AkshuAgarwal/VCActivity/issues)!
+Found a bug or having an issue? Open an Issue at [Github](https://github.com/AkshuAgarwal/DCActivity/issues)!
 
 <br>
 
 # Links
-Github: https://github.com/AkshuAgarwal/VCActivity
+Github: https://github.com/AkshuAgarwal/DCActivity

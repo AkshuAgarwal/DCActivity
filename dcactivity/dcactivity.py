@@ -31,18 +31,18 @@ from discord.http import Route
 from discord.ext.commands import Bot, AutoShardedBot, BotMissingPermissions
 
 from .errors import (
-    VCActivityException,
+    DCActivityException,
     APIException,
     InvalidChannel,
     InvalidApplicationID
 )
 
-all = ('VCApplication', 'VCActivity', )
+all = ('DCApplication', 'DCActivity', )
 
 log = logging.getLogger(__name__)
 
 
-class VCApplication:
+class DCApplication:
     """Available Voice Channel Target Application IDs."""
 
     betrayal = 773336526917861400
@@ -51,10 +51,10 @@ class VCApplication:
     poker = 755827207812677713
     youtube = 755600276941176913
 
-class VCActivity:
-    """Represents VCActivity Connection class.
+class DCActivity:
+    """Represents DCActivity Connection class.
     This class is used to interact with Discord API to create Voice 
-    Channel Invite Links to use Discord's Beta VC Activities features.
+    Channel Invite Links to use Discord's Beta Voice Channel Activities features.
     
     Parameters
     -----------
@@ -73,22 +73,22 @@ class VCActivity:
     ):
         if isinstance(bot, (Client, AutoShardedClient, Bot, AutoShardedBot)):
             self.bot = bot
-            log.info(f'Created VCActivity object with {bot.__name__} as bot instance.')
+            log.info(f'Created DCActivity object with {bot.__name__} as bot instance.')
         else:
             raise TypeError(
                 'Invalid Client/Bot object parameter passed. '
                 'Should be discord.Client/AutoShardedClient/Bot/AutoShardedBot type')
 
         self._applications: dict = {
-            'betrayal': VCApplication.betrayal,
-            'chess': VCApplication.chess,
-            'fishing': VCApplication.fishing,
-            'poker': VCApplication.poker,
-            'youtube': VCApplication.youtube,
+            'betrayal': DCApplication.betrayal,
+            'chess': DCApplication.chess,
+            'fishing': DCApplication.fishing,
+            'poker': DCApplication.poker,
+            'youtube': DCApplication.youtube,
         }
 
 
-    async def get_link(
+    async def create_link(
         self,
         voice_channel: Union[VoiceChannel, int],
         application: Union[str, int],
@@ -98,12 +98,12 @@ class VCActivity:
         ) -> str:
         """|coro|
         
-        Retrieves a Invite Link with VC Activities for the VoiceChannel passed.
+        Retrieves a Invite Link with Voice Channel Activities for the VoiceChannel passed.
         
         Parameters
         -----------
         voice_channel: Union[:class:`int`, :class:`.VoiceChannel`]
-            The Voice Channel to create VC Activity Invite Link for.
+            The Voice Channel to create Voice Channel Activity Invite Link for.
         application: Union[:class:`str`, :class:`int`]
             The Activity Type to create Invite Link for.
         max_age: Optional[:class:`int`]
@@ -125,7 +125,7 @@ class VCActivity:
             Application ID passed is Invalid.
         :exc:`.APIException`
             API is overloaded while creating Invite.
-        :exc:`.VCActivityException`
+        :exc:`.DCActivityException`
             Creating Invite link falied.
             
         Returns
@@ -202,7 +202,7 @@ class VCActivity:
             else:
                 log.debug(f'Exception occured on application: {application}; Exception: {e}')
                 traceback.print_exc()
-                raise VCActivityException(
+                raise DCActivityException(
                     'Some Exception occured while creating invite.\n'
                     f'Exception: {e}'
                 )
