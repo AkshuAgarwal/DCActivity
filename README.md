@@ -65,7 +65,7 @@ dcactivity = DCActivity(bot) # or "bot.dcactivity = DCActivity(bot)" to use it a
 
 @bot.command()
 async def youtube(ctx, channel: VoiceChannel):
-    link = await dcactivity.get_link(channel, DCApplication.youtube)
+    link = await dcactivity.create_link(channel, DCApplication.youtube)
     await ctx.send(link)
 
 bot.run('token')
@@ -106,7 +106,7 @@ bot.run('token')
           
           @commands.command()
           async def youtube(self, ctx, channel: VoiceChannel):
-              link = await self.bot.dcactivity.get_link(channel, DCApplication.youtube)
+              link = await self.bot.dcactivity.create_link(channel, DCApplication.youtube)
               await ctx.send(link)
 
       def setup(bot):
@@ -139,7 +139,7 @@ bot.run('token')
               else:
                   _channel = channel
               
-              link = await self.bot.dcactivity.get_link(
+              link = await self.bot.dcactivity.create_link(
                   ctx.author.voice.channel, DCApplication.youtube, max_age=0, max_uses=10)
               await ctx.send(link)
 

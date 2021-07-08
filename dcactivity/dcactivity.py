@@ -73,7 +73,7 @@ class DCActivity:
     ):
         if isinstance(bot, (Client, AutoShardedClient, Bot, AutoShardedBot)):
             self.bot = bot
-            log.info(f'Created DCActivity object with {bot.__name__} as bot instance.')
+            log.info(f'Created DCActivity object with {bot} as bot instance.')
         else:
             raise TypeError(
                 'Invalid Client/Bot object parameter passed. '
