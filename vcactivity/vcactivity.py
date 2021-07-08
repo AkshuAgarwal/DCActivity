@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import logging
 import traceback
 from typing import Union, Optional, TypedDict
 
@@ -37,6 +38,8 @@ from .errors import (
 )
 
 all = ('VCApplication', 'VCActivity', )
+
+log = logging.getLogger(__name__)
 
 
 class VCApplication:
@@ -70,6 +73,7 @@ class VCActivity:
     ):
         if isinstance(bot, (Client, AutoShardedClient, Bot, AutoShardedBot)):
             self.bot = bot
+            log.info(f'Created VCActivity object with {bot.__name__} as bot instance.')
         else:
             raise TypeError(
                 'Invalid Client/Bot object parameter passed. '
@@ -168,7 +172,7 @@ class VCActivity:
                 'Choose between the given range.')
 
 
-        data = {
+        payload = {
             'max_age': max_age,
             'max_uses': max_uses,
             'target_application_id': str(_app_id),
@@ -179,8 +183,9 @@ class VCActivity:
 
         try:
             response = await self.bot.http.request(
-                Route('POST', f'/channels/{_vc_id}/invites'), json=data
+                Route('POST', f'/channels/{_vc_id}/invites'), json=payload
             )
+            log.debug(f'Create invite link for target_application_id: {payload["target_application_id"]}')
 
         except Exception as e:
             if '10003' in str(e):
@@ -190,10 +195,12 @@ class VCActivity:
             elif 'target_application_id' in str(e):
                 raise InvalidApplicationID(f'Invalid Application ID ({_app_id}) passed.')
             elif '130000' in str(e):
+                log.warn('API Resource overloaded.')
                 raise APIException(
                     'API resource is currently overloaded. '
                     'Try again a little later.')
             else:
+                log.debug(f'Exception occured on application: {application}; Exception: {e}')
                 traceback.print_exc()
                 raise VCActivityException(
                     'Some Exception occured while creating invite.\n'
