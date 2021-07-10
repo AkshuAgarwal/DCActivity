@@ -1,11 +1,26 @@
+<center>
+
 # DCActivity
-An unofficial module used to access Discord's Beta features like YouTube, Poker Night, etc. by your Bot
+
+An unofficial module used to access Discord's Beta features like YouTube, Poker Night, etc. with your Bot
+
+![](https://img.shields.io/pypi/pyversions/dcactivity)
+![](https://img.shields.io/pypi/v/dcactivity)
+![](https://img.shields.io/github/license/AkshuAgarwal/DCActivity)
+
+![](https://img.shields.io/github/languages/top/AkshuAgarwal/DCActivity)
+![](https://img.shields.io/pypi/dw/dcactivity)
+![](https://img.shields.io/github/commit-activity/m/AkshuAgarwal/DCActivity)
+
+[Installation](#installation) • [Usage](#usage) • [Documentation](https://akshuagarwal.github.io/DCActivity/) • [License](LICENSE)
+
+</center>
 
 <br>
 
 # Installation
 - **Python 3.8 or higher is required**
-- **[discord.py](https://github.com/Rapptz/discord.py) V1.5.0 or higher is required**
+- **[*discord.py*](https://github.com/Rapptz/discord.py) V1.5.0 or higher is required**
 
 To install the library, simply run the following command in your terminal:
 ```
@@ -19,35 +34,34 @@ python3 -m pip install dcactivity
 <br>
 
 # Usage
-To use the library, you must first import it into your script and create a new instance of the DCActivity class:
+To use the library, you must first import it into your script and create a new instance of the *DCActivity* class:
 ```python
 from discord.ext import commands
 from dcactivity import DCActivity
 
 bot = commands.Bot(command_prefix='!')
-bot.dcact = DCActivity(bot)
+bot.dcactivity = DCActivity(bot)
 ```
 
-To create the invite link, you need to use create_link() function:
+To create the invite link, you need to use *create_link()* function:
 ```py
-
-link = await bot.dcact.create_link(voice_channel, app_id)
+link = await bot.dcactivity.create_link(voice_channel, app_id)
 ```
 
-* voice_channel: The Voice channel you want to create the invite link for. Can be Channel ID or discord.VoiceChannel object
+* *voice_channel*: The Voice channel you want to create the invite link for. Can be Channel ID or discord.VoiceChannel object
  
-* app_id: The Application ID of the Voice Channel game. For this, you need to follow either of the three steps:
+* *app_id*: The Application ID of the Voice Channel game. For this, you need to follow either of the three steps:
    
-  * Import DCApplication from dcactivity:
+  * Import *DCApplication* from *dcactivity*:
     ```python
     from dcactivity import DCApplication
 
-    link = await bot.dcact.create_link(voice_channel, DCApplication.youtube) # or DCApplication.poker, etc.
+    link = await bot.dcactivity.create_link(voice_channel, DCApplication.youtube) # or DCApplication.poker, etc.
     ```
 
   * Directly use Application Name or ID (use ID only if you know the exact ID of an activity):
     ```python
-    link = await bot.dcact.create_link(voice_channel, 'youtube') # or poker, chess, etc.
+    link = await bot.dcactivity.create_link(voice_channel, 'youtube') # or poker, chess, etc.
     ```
 
 
@@ -156,20 +170,25 @@ bot.run('token')
 <br>
 
 # Note
-* A minimum of one person needs to click on the invite link to start the Voice Channel Activity.
-* Activity resets when everyone exits. Though it can again be joined from the same link but from the starting and not resuming.
-* Games like chess/betrayal may not work in Stable Client for now. To use them, you need install [Discord PTB](https://ptb.discord.com/) or [Discord Canary](https://canary.discord.com/) Client or use them in the web browser.
+* A minimum of **one** person needs to click on the invite link to start the Voice Channel Activity.
+* Activity **resets** when everyone exits. Though it can again be joined from the same link but from the starting and **not getting resumed**.
+* Games like **chess/betrayal** may **not work in Stable Client** for now. To use them, you need install [Discord PTB](https://ptb.discord.com/) or [Discord Canary](https://canary.discord.com/) Client or use them in the web browser.
+* **Play/Spectate** Button don't work if no one has already joined the Activity. Though after atleast 1 user joins the Activity (by clicking the link), the buttons works fine for other users.
 
 <br>
 
 # Info
-This package is licensed under MIT License. Any contributions are welcomed.
+This package is licensed under [MIT License](LICENSE). Any contributions are welcomed.
 
-Need to contribute? Just Open a Pull Request with your changes and some information about your changes.
+Need to contribute? Just Open a [Pull Request](https://github.com/AkshuAgarwal/DCActivity/pulls) with your changes and some information about your changes.
 
 Found a bug or having an issue? Open an Issue at [Github](https://github.com/AkshuAgarwal/DCActivity/issues)!
 
 <br>
 
 # Links
-Github: https://github.com/AkshuAgarwal/DCActivity
+* Documentation: https://akshuagarwal.github.io/DCActivity/
+
+* Github: https://github.com/AkshuAgarwal/DCActivity/
+
+* PyPi: https://pypi.org/project/dcactivity/
