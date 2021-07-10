@@ -43,7 +43,7 @@ log = logging.getLogger(__name__)
 
 
 class DCApplication:
-    """Available Voice Channel Target Application IDs."""
+    """Available Voice Channel Target Application's IDs."""
 
     betrayal = 773336526917861400
     chess = 832012586023256104
@@ -98,13 +98,13 @@ class DCActivity:
         ) -> str:
         """|coro|
         
-        Retrieves a Invite Link with Voice Channel Activities for the VoiceChannel passed.
+        Retrieves an Invite Link with Voice Channel Activities for the VoiceChannel passed.
         
         Parameters
         -----------
         voice_channel: Union[:class:`int`, :class:`.VoiceChannel`]
             The Voice Channel to create Voice Channel Activity Invite Link for.
-        application: Union[:class:`str`, :class:`int`]
+        application: Union[:class:`str`, :class:`int`, :class:`.DCApplication`]
             The Activity Type to create Invite Link for.
         max_age: Optional[:class:`int`]
             How long the invite should last in seconds. If it’s 0 then the invite doesn’t expire. Should be between 0 to 604800 seconds (7 days). Defaults to 86400 (24 Hours).
@@ -131,7 +131,7 @@ class DCActivity:
         Returns
         --------
         :class:`str`
-            The Invite Link Created."""
+            The Invite Link that was Created."""
 
         if isinstance(voice_channel, VoiceChannel):
             _vc_id = voice_channel.id
@@ -139,7 +139,7 @@ class DCActivity:
             _vc_id = voice_channel
         else:
             raise TypeError(
-                'voice_channel parameter must be integer or' 
+                'voice_channel parameter must be integer or ' 
                 f'discord.VoiceChannel type and not "{type(voice_channel).__name__}"'
             )
 
