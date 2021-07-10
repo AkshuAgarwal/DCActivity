@@ -1,0 +1,72 @@
+@import './variables';
+
+code {
+    p {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: $primary-color;
+        max-width: 90%;
+        word-wrap: break-word;
+        color: white;
+        line-height: 20px;
+        &.atts-mts {
+            padding-left: 20px;
+        }
+    }
+}
+
+#main {
+    li {
+        line-height: 30px;
+    }
+    p {
+        line-height: 30px;
+    }
+}
+
+.atts-mts-info {
+    margin: 50px 0;
+    a {
+        color: $link-color;
+        text-decoration: none;
+    }
+}
+
+.atts-mts-rts {
+    padding-left: 50px;
+}
+
+.class-info {
+    display: flex;
+    flex-direction: row;
+    max-width: 50%;
+    justify-content: space-between;
+    ul {
+        border-left: 3px solid black;
+    }
+}
+
+.class-info-text {
+    line-height: 25px;
+    margin-left: 30px;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.non-underline {
+    text-decoration: none;
+}
+
+.class-redirects {
+    color: white;
+}
+
+.txt-color {
+    color: $txt-color;
+}

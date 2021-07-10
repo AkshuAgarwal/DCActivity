@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="Discord, Discord Bot, Bot, Python, discord.py, dcactivity">
+        <meta name="description" content="DCActivity Documentation">
+        <meta name="author" content="AkshuAgarwal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../min-css/style.min.css">
+        <link rel="stylesheet" href="../min-css/examples.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <title>Examples - DCActivity</title>
+    </head>
+    <body>
+        <header>
+            <nav id="topnav">
+                <a href="notready.html" class="nav-link">Home</a>
+                <a href="https://github.com/AkshuAgarwal?tab=repositories" class="nav-link">Projects</a>
+                <a href="https://github.com/AkshuAgarwal" class="nav-link">Github</a>
+                <a href="notready.html" class="nav-link">Contact</a>
+            </nav>
+        </header>
+        <aside id="sidebar">
+            <h2>Contents</h2>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Introduction</a></li>
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="exceptions.html">Exceptions</a></li>
+                    <li><a href="examples.html">Examples</a></li>
+                    <li class="sub-link"><a href="#examples.Client">Client</a></li>
+                    <li class="sub-link"><a href="#examples.Bot">Bot</a></li>
+                    <li class="sub-link"><a href="#examples.bot-with-cogs">Bot with Cogs</a></li>
+                    <br>
+                    <li><i class="fab fa-github" style="color: white;"></i><a href="https://github.com/AkshuAgarwal/DCActivity">Github</a></li>
+                    <li><i class="fab fa-python" style="color: white;"></i><a href="https://pypi.org/project/dcactivity/">PyPi</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section id="main">
+            <h1>Examples</h1>
+            <p>The following section outlines some helpful Examples to use DCavtivity module.</p>
+            <hr>
+            <br>
+            <div id="examples.Client">
+                <h2><a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.Client">Client</a></h2>
+                <pre><code><span class="do">from</span> <span class="gr">discord</span> <span class="do">import</span> <span class="gr">Client</span>, <span class="gr">VoiceChannel</span>
+<span class="do">from</span> <span class="gr">dcactivity</span> <span class="do">import</span> <span class="gr">DCActivity</span>, <span class="gr">DCApplication</span>
+
+<span class="aq">client</span> = <span class="gr">Client</span>()
+dcactivity = <span class="gr">DCActivity</span>(<span class="aq">client</span>)
+
+<span class="yl">@</span><span class="gr">client</span><span class="yl">.event</span>
+<span class="db">async def</span> <span class="yl">on_message</span>(<span class="aq">message</span>):
+    <span class="do">if</span> <span class="aq">message</span>.content.startswith(<span class="ch">"!youtube"</span>):
+        <span class="aq">link</span> = <span class="do">await</span> dcactivity.create_link(<span class="aq">message.author.voice.channel</span>, <span class="gr">DCApplication</span>.youtube)
+        <span class="do">await</span> <span class="aq">message</span>.channel.send(<span class="aq">link</span>)
+
+<span class="aq">client</span>.run(<span class="ch">"token"</span>)</code></pre>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div id="examples.Bot">
+                <h2><a href="https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Bot">Bot</a></h2>
+                <pre><code><span class="do">from</span> <span class="gr">discord</span> <span class="do">import</span> <span class="gr">Intents</span>, <span class="gr">VoiceChannel</span>
+<span class="do">from</span> <span class="gr">discord</span>.ext.commands <span class="do">import</span> <span class="gr">Bot</span>
+<span class="do">from</span> <span class="gr">dcactivity</span> <span class="do">import</span> <span class="gr">DCActivity</span>, <span class="gr">DCApplication</span>
+
+<span class="aq">bot</span> = <span class="gr">Bot</span>(<span class="aq">command_prefix</span>=<span class="ch">"!"</span>, <span class="aq">intents</span>=<span class="gr">Intents</span>.default())
+dcactivity = <span class="gr">DCActivity</span>(<span class="aq">bot</span>) <span class="dg"># or bot.dcactivity = DCActivity(bot) to use it as a BotVar</span>
+
+<span class="yl">@</span><span class="gr">client</span><span class="yl">.command</span>()
+<span class="db">async def</span> <span class="yl">youtube</span>(<span class="aq">ctx</span>, <span class="aq">channel</span>: <span class="gr">VoiceChannel</span>):
+    <span class="aq">link</span> = <span class="do">await</span> dcactivity.create_link(<span class="aq">channel</span>, <span class="gr">DCApplication</span>.youtube)
+    <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">link</span>)
+
+<span class="aq">bot</span>.run(<span class="ch">"token"</span>)</code></pre>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <h1>Advanced Usage</h1>
+            <div id="examples.bot-with-cogs">
+                <h2>Bot with Cogs</h2>
+                <ul>
+                    <li>bot.py:</li>
+                </ul>
+                <pre><code><span class="do">from</span> <span class="gr">discord</span> <span class="do">import</span> <span class="gr">Intents</span>
+<span class="do">from</span> <span class="gr">discord</span>.ext <span class="do">import</span> <span class="gr">commands</span>
+<span class="do">from</span> <span class="gr">dcactivity</span> <span class="do">import</span> <span class="gr">DCActivity</span>, <span class="gr">DCApplication</span>
+
+<span class="db">class</span> <span class="gr">Bot</span>(<span class="gr">commands.Bot</span>):
+    <span class="db">def</span> <span class="yl">__init__</span>(<span class="aq">self</span>):
+        <span class="gr">super</span>().<span class="yl">__init__</span>(<span class="aq">command_prefix</span>=<span class="ch">"!"</span>, <span class="aq">intents</span>=<span class="gr">Intents</span>.default())
+        <span class="aq"self>self</span>.<span class="aq">bot</span>.dcactivity = <span class="gr">DCActivity</span>(<span class="aq">self</span>)
+
+<span class="aq">bot</span> = <span class="gr">Bot</span>()
+<span class="aq">bot</span>.run(<span class="ch">"token"</span>)</code></pre>
+                <br>
+                <ul>
+                    <li>cogs.py:</li>
+                </ul>
+                <pre><code><span class="do">from</span> <span class="gr">discord</span> <span class="do">import</span> <span class="gr">VoiceChannel</span>
+<span class="do">from</span> <span class="gr">discord</span>.ext <span class="do">import</span> <span class="gr">commands</span>
+<span class="do">from</span> <span class="gr">dcactivity</span> <span class="do">import</span> <span class="gr">DCApplication</span>
+<span class="do">from</span> <span class="gr">dcactivity</span>.errors <span class="do">import</span> <span class="gr">InvalidChannel</span>
+
+<span class="db">class</span> <span class="gr">MyCog</span>(<span class="gr">commands</span>.<span class="gr">Cog</span>):
+    <span class="db">def</span> <span class="yl">__init__</span>(<span class="aq">self</span>, <span class="aq">bot</span>):
+        <span class="aq">self</span>.<span class="aq">bot</span> = <span class="aq">bot</span>
+    
+    <span class="yl">@</span><span class="gr">commands</span>.<span class="yl">command</span>()
+    <span class="db">async</span> <span class="db">def</span> <span class="yl">youtube</span>(<span class="aq">self</span>, <span class="aq">ctx</span>, <span class="aq">channel</span>=<span class="db">None</span>):
+        <span class="do">if</span> <span class="db">not</span> <span class="aq">channel</span>:
+            <span class="do">if</span> <span class="db">not</span> <span class="aq">ctx</span>.author.voice:
+                <span class="do">return await</span> <span class="aq">ctx</span>.send(<span class="ch">"You need to connect to a voice channel first"</span>)
+            <span class="do">if</span> <span class="db">not</span> <span class="yl">isinstance</span>(<span class="aq">ctx</span>.author.voice.channel, <span class="gr">VoiceChannel</span>):
+                <span class="do">return await</span> <span class="aq">ctx</span>.send(<span class="ch">"This feature is not supported in Stage Channels."</span>)
+            <span class="aq">_channel</span> = <span class="aq">ctx</span>.author.voice.channel
+        <span class="do">else</span>:
+            <span class="aq">_channel</span> = <span class="aq">channel</span>
+
+        <span class="aq">link</span> = <span class="do">await</span> <span class="aq">self</span>.<span class="aq">bot</span>.dcactivity.create_link(
+            <span class="aq">_channel</span>, <span class="gr">DCApplication</span>.<span class="aq">youtube</span>, <span class="aq">max_age</span>=0, <span class="aq">max_users</span>=10)
+        <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">link</span>)
+
+    <span class="yl">@youtube</span>.<span class="yl">error</span>
+    <span class="db">async def</span> <span class="yl">youtube_error</span>(<span class="aq">self</span>, <span class="aq">ctx</span>, <span class="aq">exc</span>):
+        <span class="aq">exc</span> = <span class="yl">getattr</span>(<span class="aq">exc</span>, <span class="ch">"original"</span>, <span class="aq">exc</span>)
+        <span class="do">if</span> <span class="yl">isinstance</span>(<span class="aq">exc</span>, <span class="gr">InvalidChannel</span>):
+            <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="ch">"Invalid Channel given as argument."</span>)
+
+<span class="db">def</span> <span class="yl">setup</span>(<span class="aq">bot</span>):
+    <span class="aq">bot</span>.add_cog(<span class="gr">MyCog</span>(<span class="aq">bot</span>))</code></pre>
+            </div>
+        </section>
+    </body>
+</html>

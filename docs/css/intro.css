@@ -1,0 +1,21 @@
+#main a {
+  color: #09c2ff;
+  text-decoration: none;
+}
+
+#main img {
+  margin-bottom: 20px;
+}
+
+#main img.image-small {
+  width: 30%;
+}
+
+#main img.image-large {
+  width: 75%;
+}
+
+#main li {
+  margin: 7px;
+}
+/*# sourceMappingURL=intro.css.map */

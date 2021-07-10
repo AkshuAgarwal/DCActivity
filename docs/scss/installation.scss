@@ -1,0 +1,11 @@
+@import './variables';
+
+p {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $primary-color;
+    max-width: 60%;
+    word-wrap: break-word;
+    color: white;
+    line-height: 20px;
+}

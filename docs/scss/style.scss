@@ -1,0 +1,111 @@
+@import './variables';
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: arial, helvetica, sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: $primary-color;
+    min-height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+::-webkit-scrollbar-track {
+    background: $scroll-bg-color;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $scroll-color;
+    border-radius: 20px;
+    border: 2px solid $bg-color;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+}
+
+#topnav {
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 7px;
+    a {
+        text-decoration: none;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 20px;
+        color: $txt-color;
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            background-color: $txt-color;
+            color: $primary-color;
+        }
+    }
+}
+
+#sidebar, #main {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 67px;
+    bottom: 0;
+}
+
+#sidebar {
+    width: 180px;
+    left: 0;
+    padding-left: 15px;
+    h2, a {
+        color: $txt-color;
+        text-decoration: none;
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+            list-style: none;
+            margin: 15px 0;
+            font-size: 14px;
+            a {
+                padding: 5px;
+                border-radius: 5px;
+            }
+            a:hover {
+                transition: all 0.3s ease-in-out;
+                background-color: $txt-color;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.sub-link {
+    padding-left: 25px;
+}
+
+#main {
+    background-color: $bg-color;
+    border-radius: 7px;
+    position: absolute;
+    left: 195px;
+    right: 0;
+    padding: 20px;
+    padding-left: 50px;
+    color: $txt-color;
+    h1 {
+        font-size: 40px;
+    }
+}

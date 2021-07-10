@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="Discord, Discord Bot, Bot, Python, discord.py, dcactivity">
+        <meta name="description" content="DCActivity Documentation">
+        <meta name="author" content="AkshuAgarwal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../min-css/style.min.css">
+        <link rel="stylesheet" href="../min-css/exceptions.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <title>Exceptions - DCActivity</title>
+    </head>
+    <body>
+        <header>
+            <nav id="topnav">
+                <a href="notready.html" class="nav-link">Home</a>
+                <a href="https://github.com/AkshuAgarwal?tab=repositories" class="nav-link">Projects</a>
+                <a href="https://github.com/AkshuAgarwal" class="nav-link">Github</a>
+                <a href="notready.html" class="nav-link">Contact</a>
+            </nav>
+        </header>
+        <aside id="sidebar">
+            <h2>Contents</h2>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Introduction</a></li>
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li><a href="exceptions.html">Exceptions</a></li>
+                    <li class="sub-link"><a href="#exception-hierarchy">Exception Hierarchy</a></li>
+                    <li class="sub-link"><a href="#dcactivity.errors.DCActivityException">DCActivityException</a></li>
+                    <li class="sub-link"><a href="#dcactivity.errors.APIException">APIException</a></li>
+                    <li class="sub-link"><a href="#dcactivity.errors.InvalidChannel">InvalidChannel</a></li>
+                    <li class="sub-link"><a href="#dcactivity.errors.InvalidApplicationID">InvalidApplicationID</a></li>
+                    <li><a href="examples.html">Examples</a></li>
+                    <br>
+                    <li><i class="fab fa-github" style="color: white;"></i><a href="https://github.com/AkshuAgarwal/DCActivity">Github</a></li>
+                    <li><i class="fab fa-python" style="color: white;"></i><a href="https://pypi.org/project/dcactivity/">PyPi</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section id="main">
+            <h1>DCActivity Exceptions</h1>
+            <p>The following section outlines exceptions raised by DCavtivity module.</p>
+            <hr>
+            <div id="exception-hierarchy">
+                <h2>Exception Hierarchy</h2>
+                <ul>
+                    <li><a href="#dcactivity.errors.DCActivityException">DCActivityException</a></li>
+                    <ul>
+                        <li><a href="#dcactivity.errors.APIException">APIException</a></li>
+                    </ul>
+                    <li><a href="#dcactivity.errors.InvalidChannel">InvalidChannel</a></li>
+                    <li><a href="#dcactivity.errors.InvalidApplicationID">InvalidApplicationID</a></li>
+                </ul>
+            </div>
+            <hr>
+            <br>
+            <h2>Exceptions</h2>
+            <div id="dcactivity.errors.DCActivityException">
+                <h2>DCActivityException</h2>
+                <code>
+                    <p>Exception dcactivity.errors.<span class="bold">DCActivityException</span></p>
+                </code>
+                <p class="class-info-text">
+                    Base Exception class for DCActivity.<br>
+                    Most of the exceptions raised by DCActivity are derived from this class.<br>
+                    This itself is derived from <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.DiscordException">DiscordException</a> Exception class of discord.py
+                </p>
+            </div>
+            <br>
+            <div id="dcactivity.errors.APIException">
+                <h2>APIException</h2>
+                <code>
+                    <p>Exception dcactivity.<span class="bold">APIException</span></p>
+                </code>
+                <p class="class-info-text">
+                    Exception that is raised in case of some errors due to API while requesting Invite Link.<br>
+                    It is mostly raised because of getting Rate-Limited by the API.<br><br>
+                    Inherited from <a href="dcactivity.errors.DCActivityException">DCActivityException</a>.
+                </p>
+            </div>
+            <br>
+            <div id="dcactivity.errors.InvalidChannel">
+                <h2>InvalidChannel</h2>
+                <code>
+                    <p>Exception dcactivity.<span class="bold">InvalidChannel</span></p>
+                </code>
+                <p class="class-info-text">
+                    Exception that is raised when library encounters invalid channel as the input in <a href="api.html#dcactivity.DCActivity.create_link">create_link()</a> method.<br><br>
+                    Interited from <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.InvalidArgument">discord.InvalidArgument</a>.
+                </p>
+            </div>
+            <br>
+            <div id="dcactivity.errors.InvalidApplicationID">
+                <h2>InvalidApplicationID</h2>
+                <code>
+                    <p>Exception dcactivity.<span class="bold">InvalidApplicationID</span></p>
+                </code>
+                <p class="class-info-text">
+                    Exception that is raised when library encounters invalid Application ID as the input in <a href="api.html#dcactivity.DCActivity.create_link">create_link()</a> method.<br><br>
+                    Interited from <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.InvalidArgument">discord.InvalidArgument</a>.
+                </p>
+            </div>
+        </section>
+    </body>
+</html>

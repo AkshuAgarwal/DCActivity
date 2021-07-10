@@ -1,0 +1,73 @@
+@import './variables';
+
+#main {
+    a {
+        color: $link-color;
+        text-decoration: none;
+    }
+}
+
+code {
+    &.language-py {
+        background: $primary-color;
+    }
+    p {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: $primary-color;
+        max-width: 90%;
+        word-wrap: break-word;
+        color: white;
+        line-height: 20px;
+        &.atts-mts {
+            padding-left: 20px;
+        }
+    }
+}
+
+pre {
+    overflow-x: scroll;
+    background-color: $primary-color;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    word-wrap: break-word;
+    line-height: 20px;
+    max-width: 75%;
+}
+
+.do {
+    color: violet;
+}
+
+.gr {
+    color: chartreuse;
+}
+
+.db {
+    color:dodgerblue;
+}
+
+.aq {
+    color: aqua;
+}
+
+.yl {
+    color: yellow;
+}
+
+.dg {
+    color: darkolivegreen;
+}
+
+.ch {
+    color:chocolate
+}
+
+.tab-1 {
+    margin-left: 30px;
+}
+
+.tab-2 {
+    margin-left: 60px;
+}

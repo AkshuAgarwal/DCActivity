@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="Discord, Discord Bot, Bot, Python, discord.py, dcactivity">
+        <meta name="description" content="DCActivity Documentation">
+        <meta name="author" content="AkshuAgarwal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../min-css/style.min.css">
+        <link rel="stylesheet" href="../min-css/api.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+        <title>API Reference - DCActivity</title>
+    </head>
+    <body>
+        <header>
+            <nav id="topnav">
+                <a href="notready.html" class="nav-link">Home</a>
+                <a href="https://github.com/AkshuAgarwal?tab=repositories" class="nav-link">Projects</a>
+                <a href="https://github.com/AkshuAgarwal" class="nav-link">Github</a>
+                <a href="notready.html" class="nav-link">Contact</a>
+            </nav>
+        </header>
+        <aside id="sidebar">
+            <h2>Contents</h2>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Introduction</a></li>
+                    <li><a href="installation.html">Installation</a></li>
+                    <li><a href="api.html">API Reference</a></li>
+                    <li class="sub-link"><a href="#dcactivity.DCActivity">DCActivity</a></li>
+                    <li class="sub-link"><a href="#dcactivity.DCApplication">DCApplication</a></li>
+                    <li><a href="exceptions.html">Exceptions</a></li>
+                    <li><a href="examples.html">Examples</a></li>
+                    <br>
+                    <li><i class="fab fa-github" style="color: white;"></i><a href="https://github.com/AkshuAgarwal/DCActivity">Github</a></li>
+                    <li><i class="fab fa-python" style="color: white;"></i><a href="https://pypi.org/project/dcactivity/">PyPi</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section id="main">
+            <h1>API Reference</h1>
+            <p>The following section outlines the API and usage of DCavtivity module.</p>
+            <hr>
+            <div id="dcactivity.DCActivity">
+                <h2>DCActivity</h2>
+                <code>
+                    <p>class dcactivity.<span class="bold">DCActivity</span>(bot=Union[<a href="https://discordpy.readthedocs.io/en/stable/api.html#client" class="underline class-redirects">Client</a>, <a href="https://discordpy.readthedocs.io/en/stable/api.html#autoshardedclient" class="underline class-redirects">AutoShardedClient</a>, <a href="https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.Bot" class="underline class-redirects">Bot</a>, <a href="https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#autoshardedbot" class="underline class-redirects">AutoShardedBot</a>])</p>
+                </code>
+                <div class="class-info">
+                    <div class="attributes">
+                        <h4>Attributes</h4>
+                        <ul>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity._applications">_applications</a></li>
+                        </ul>
+                    </div>
+                    <div class="methods">
+                        <h4>Methods</h4>
+                        <ul>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity.create_link">async create_link</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="class-info-text">
+                    Represents DCActivity Connection class.<br>
+                    This class is used to interact with Discord API to create Voice Channel Invite Links to use Discord's Beta Voice Channel Activities features.
+                </p>
+                <div id="dcactivity.DCActivity._applications" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">_applications</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns a raw dict of Supported Applications with their IDs.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></span>
+                </div>
+                <div id="dcactivity.DCActivity.create_link" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">await <span class="bold">create_link</span>(voice_channel, application, *, max_age=86400, max_uses=0)</p>
+                    </code>
+                    <p class="class-info-text">This function is a <a href="https://docs.python.org/3/library/asyncio-task.html#coroutine">coroutine</a>.<br></p>
+                    <p class="class-info-text">Retrieves an Invite Link with Voice Channel Activities for the VoiceChannel passed.</p>
+                    <p class="class-info-text">You must have the <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.Permissions.create_instant_invite">create_instant_invite</a> permission to do this.</p>
+                    <span class="bold class-info-text">Parameters</span><br>
+                    <li class="atts-mts-rts">voice_channel (Union[<a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://discordpy.readthedocs.io/en/stable/api.html#voicechannel">VoiceChannel</a>]) - The Voice Channel to create Voice Channel Activity Invite Link for.</li>
+                    <li class="atts-mts-rts">application (Union[<a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="#dcactivity.DCApplication">DCApplication</a>]) - The Activity Type to create Invite Link for. Note that you should use ID only if you know the exact ID for the Application.</li>
+                    <li class="atts-mts-rts">max_age (Optional[<a href="https://docs.python.org/3/library/functions.html#int">int</a>]) - How long the invite should last in seconds. If it’s 0 then the invite doesn’t expire. Should be between 0 to 604800 seconds (7 days). Defaults to 86400 (24 Hours).</li>
+                    <li class="atts-mts-rts">max_uses (Optional[<a href="https://docs.python.org/3/library/functions.html#int">int</a>]) - How many uses the invite could be used for. If it’s 0 then there are unlimited uses. Should be between 0 to 100. Defaults to 0.</li>
+                    <br><span class="bold class-info-text">Raises</span><br>
+                    <li class="atts-mts-rts"><a href="https://docs.python.org/3/library/exceptions.html#TypeError">TypeError</a> - Invalid class type passed in voice_channel or application.</li>
+                    <li class="atts-mts-rts"><a href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a> - Any Value passed is Invalid/Not Acceptable.</li>
+                    <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.InvalidChannel">InvalidChannel</a> - Voice Channel passed is Invalid.</li>
+                    <li class="atts-mts-rts"><a href="https://discordpy.readthedocs.io/en/stable/ext/commands/api.html#discord.ext.commands.BotMissingPermissions">BotMissingPermissions</a> - Bot is missing permissions to create invites.</li>
+                    <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.InvalidApplicationID">InvalidApplicationID</a> - Application ID passed is Invalid.</li>
+                    <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.APIException">APIException</a> - API is overloaded while creating Invite.</li>
+                    <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.DCActivityException">DCActivityException</a> - Creating Invite link falied.</li>
+                    <br><span class="bold class-info-text">Returns</span><br>
+                    <p class="atts-mts-rts">The Invite Link that was Created. - <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></p>
+                </div>
+            </div>
+            <div id="dcactivity.DCApplication">
+                <h2>DCApplication</h2>
+                <code>
+                    <p>class dcactivity.<span class="bold">DCApplication</span>()</p>
+                </code>
+                <div class="class-info">
+                    <div class="attributes">
+                        <h4>Attributes</h4>
+                        <ul>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCApplication.betrayal">betrayal</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCApplication.chess">chess</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCApplication.fishing">fishing</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCApplication.poker">poker</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCApplication.youtube">youtube</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="class-info-text">Available Voice Channel Target Application's IDs.</p>
+                <div id="dcactivity.DCApplication.betrayal" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">betrayal</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns the Application ID for betrayal (Betrayal.io) Application.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#int">int</a></span>
+                </div>
+                <div id="dcactivity.DCApplication.chess" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">chess</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns the Application ID for chess (CG 2 DEV) Application.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#int">int</a></span>
+                </div>
+                <div id="dcactivity.DCApplication.fishing" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">fishing</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns the Application ID for fishing (Fishington.io) Application.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#int">int</a></span>
+                </div>
+                <div id="dcactivity.DCApplication.poker" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">poker</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns the Application ID for poker (Poker Night) Application.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#int">int</a></span>
+                </div>
+                <div id="dcactivity.DCApplication.youtube" class="atts-mts-info">
+                    <code>
+                        <p class="atts-mts">youtube</p>
+                    </code>
+                    <p class="class-info-text">
+                        Returns the Application ID for youtube (YouTube Together) Application.
+                    </p>
+                    <span class="bold class-info-text">Type</span><br><br>
+                    <span class="atts-mts-rts"><a href="https://docs.python.org/3/library/stdtypes.html#int">int</a></span>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

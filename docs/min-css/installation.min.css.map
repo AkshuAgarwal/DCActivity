@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,CAAC,AAAC,CACE,OAAO,CAAE,IAAI,CACb,aAAa,CAAE,GAAG,CAClB,gBAAgB,CCLJ,IAAK,CDMjB,SAAS,CAAE,GAAG,CACd,SAAS,CAAE,UAAU,CACrB,KAAK,CAAE,KAAK,CACZ,WAAW,CAAE,IAAI,CACpB",
+    "sources": [
+        "../scss/installation.scss",
+        "../scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "installation.min.css"
+}

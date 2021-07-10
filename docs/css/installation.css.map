@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,CAAC,CAAC;EACE,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,GAAG;EAClB,gBAAgB,ECLJ,KAAK;EDMjB,SAAS,EAAE,GAAG;EACd,SAAS,EAAE,UAAU;EACrB,KAAK,EAAE,KAAK;EACZ,WAAW,EAAE,IAAI;CACpB",
+    "sources": [
+        "../scss/installation.scss",
+        "../scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "installation.css"
+}

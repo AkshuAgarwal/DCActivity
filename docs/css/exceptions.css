@@ -1,0 +1,36 @@
+code p {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: black;
+  max-width: 90%;
+  word-wrap: break-word;
+  color: white;
+  line-height: 20px;
+}
+
+code p.atts-mts {
+  padding-left: 20px;
+}
+
+#main li {
+  line-height: 30px;
+}
+
+#main p {
+  line-height: 30px;
+}
+
+#main a {
+  color: #09c2ff;
+  text-decoration: none;
+}
+
+.class-info-text {
+  line-height: 25px;
+  margin-left: 30px;
+}
+
+.bold {
+  font-weight: bolder;
+}
+/*# sourceMappingURL=exceptions.css.map */
