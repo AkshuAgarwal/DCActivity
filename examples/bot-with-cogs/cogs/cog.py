@@ -1,6 +1,6 @@
 from discord import VoiceChannel
 from discord.ext import commands
-from vcactivity import VCApplication
+from dcactivity import DCApplication
 
 
 class MyCog(commands.Cog):
@@ -9,7 +9,7 @@ class MyCog(commands.Cog):
     
     @commands.command()
     async def youtube(self, ctx, channel: VoiceChannel):
-        link = await self.bot.vcactivity.get_link(channel, VCApplication.youtube)
+        link = await self.bot.dcactivity.create_link(channel, DCApplication.youtube)
         await ctx.send(link)
 
 def setup(bot):

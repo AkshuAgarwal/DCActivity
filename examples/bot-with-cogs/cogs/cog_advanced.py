@@ -1,8 +1,8 @@
 from typing import Optional
 from discord import VoiceChannel
 from discord.ext import commands
-from vcactivity import VCApplication
-from vcactivity.errors import InvalidChannel
+from dcactivity import DCApplication
+from dcactivity.errors import InvalidChannel
 
 
 class MyAdvancedCog(commands.Cog):
@@ -10,7 +10,7 @@ class MyAdvancedCog(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def custom_link(self, ctx, channel=None):
+    async def youtube(self, ctx, channel=None):
         if not channel:
             if not ctx.author.voice:
                 return await ctx.send('You need to connect to a voice channel first')
@@ -20,11 +20,11 @@ class MyAdvancedCog(commands.Cog):
         else:
             _channel = channel
         
-        link = await self.bot.vcactivity.get_link(
-            _channel, VCApplication.youtube, max_age=0, max_uses=10)
+        link = await self.bot.dcactivity.create_link(
+            _channel, DCApplication.youtube, max_age=0, max_uses=10)
         await ctx.send(link)
 
-    @custom_link.error
+    @youtube.error
     async def custom_link_error(self, ctx, exc):
         exc = getattr(exc, 'original', exc)
         if isinstance(exc, InvalidChannel):
