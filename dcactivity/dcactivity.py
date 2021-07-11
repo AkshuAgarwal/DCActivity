@@ -24,9 +24,14 @@ SOFTWARE.
 
 import logging
 import traceback
-from typing import Union, Optional, TypedDict
+from typing import Union, Optional
 
-from discord import Client, AutoShardedClient, VoiceChannel
+from discord import (
+    Client,
+    AutoShardedClient,
+    VoiceChannel,
+    Invite,
+)
 from discord.http import Route
 from discord.ext.commands import Bot, AutoShardedBot, BotMissingPermissions
 
@@ -34,10 +39,10 @@ from .errors import (
     DCActivityException,
     APIException,
     InvalidChannel,
-    InvalidApplicationID
+    InvalidApplicationID,
 )
 
-all = ('DCApplication', 'DCActivity', )
+__all__ = ('DCApplication', 'DCActivity', )
 
 log = logging.getLogger(__name__)
 
@@ -87,15 +92,33 @@ class DCActivity:
             'youtube': DCApplication.youtube,
         }
 
+    @property
+    def applications(self):
+        return self._applications
+    
+    async def _create_invite_object(self, response: dict) -> Invite:
+        """Internal Method to create a discord.Invite object from a response JSON."""
 
-    async def create_link(
+        if 'errors' in response:
+            _exc = "\n".join(f"{exc['code']}: {exc['message']}" for exc in response['errors']['_errors'])
+            raise DCActivityException(
+                f'Error occured while creating Invite.\n {_exc}')
+
+        elif isinstance(response['code'], int) and int(response['code']) == 0:
+            raise DCActivityException(
+                f'Error occured while creating Invite.\n Code: {response["code"]}, Message: {response["message"]}')
+
+        return Invite(state=self.bot._connection, data=response)
+        
+
+    async def create_invite(
         self,
         voice_channel: Union[VoiceChannel, int],
         application: Union[str, int],
         *,
         max_age: Optional[int] = 86400,
         max_uses: Optional[int] = 0,
-        ) -> str:
+        ) -> Invite:
         """|coro|
         
         Retrieves an Invite Link with Voice Channel Activities for the VoiceChannel passed.
@@ -130,8 +153,8 @@ class DCActivity:
             
         Returns
         --------
-        :class:`str`
-            The Invite Link that was Created."""
+        :class:`.Invite`
+            The Invite that was Created."""
 
         if isinstance(voice_channel, VoiceChannel):
             _vc_id = voice_channel.id
@@ -207,4 +230,4 @@ class DCActivity:
                     f'Exception: {e}'
                 )
 
-        return f'https://discord.com/invite/{response["code"]}'
+        return await self._create_invite_object(response)

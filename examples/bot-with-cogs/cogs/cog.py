@@ -9,8 +9,8 @@ class MyCog(commands.Cog):
     
     @commands.command()
     async def youtube(self, ctx, channel: VoiceChannel):
-        link = await self.bot.dcactivity.create_link(channel, DCApplication.youtube)
-        await ctx.send(link)
+        invite = await self.bot.dcactivity.create_invite(channel, DCApplication.youtube)
+        await ctx.send(invite)
 
 def setup(bot):
     bot.add_cog(MyCog(bot))

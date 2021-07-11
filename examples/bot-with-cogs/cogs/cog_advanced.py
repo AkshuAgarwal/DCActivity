@@ -20,9 +20,9 @@ class MyAdvancedCog(commands.Cog):
         else:
             _channel = channel
         
-        link = await self.bot.dcactivity.create_link(
+        invite = await self.bot.dcactivity.create_invite(
             _channel, DCApplication.youtube, max_age=0, max_uses=10)
-        await ctx.send(link)
+        await ctx.send(invite)
 
     @youtube.error
     async def custom_link_error(self, ctx, exc):

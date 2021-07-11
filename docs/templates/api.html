@@ -41,7 +41,7 @@
         </aside>
         <section id="main">
             <h1>API Reference</h1>
-            <p>The following section outlines the API and usage of DCavtivity module.</p>
+            <p>The following section outlines the API and usage of DCActivity module.</p>
             <hr>
             <div id="dcactivity.DCActivity">
                 <h2>DCActivity</h2>
@@ -52,13 +52,13 @@
                     <div class="attributes">
                         <h4>Attributes</h4>
                         <ul>
-                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity._applications">_applications</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity._applications">applications</a></li>
                         </ul>
                     </div>
                     <div class="methods">
                         <h4>Methods</h4>
                         <ul>
-                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity.create_link">async create_link</a></li>
+                            <li><a class="txt-color non-underline" href="#dcactivity.DCActivity.create_link">async create_invite</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 </p>
                 <div id="dcactivity.DCActivity._applications" class="atts-mts-info">
                     <code>
-                        <p class="atts-mts">_applications</p>
+                        <p class="atts-mts">property <span class="bold">applications</span></p>
                     </code>
                     <p class="class-info-text">
                         Returns a raw dict of Supported Applications with their IDs.
@@ -78,10 +78,10 @@
                 </div>
                 <div id="dcactivity.DCActivity.create_link" class="atts-mts-info">
                     <code>
-                        <p class="atts-mts">await <span class="bold">create_link</span>(voice_channel, application, *, max_age=86400, max_uses=0)</p>
+                        <p class="atts-mts">await <span class="bold">create_invite</span>(voice_channel, application, *, max_age=86400, max_uses=0)</p>
                     </code>
                     <p class="class-info-text">This function is a <a href="https://docs.python.org/3/library/asyncio-task.html#coroutine">coroutine</a>.<br></p>
-                    <p class="class-info-text">Retrieves an Invite Link with Voice Channel Activities for the VoiceChannel passed.</p>
+                    <p class="class-info-text">Retrieves a discord.Invite object with Voice Channel Activities for the VoiceChannel passed.</p>
                     <p class="class-info-text">You must have the <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.Permissions.create_instant_invite">create_instant_invite</a> permission to do this.</p>
                     <span class="bold class-info-text">Parameters</span><br>
                     <li class="atts-mts-rts">voice_channel (Union[<a href="https://docs.python.org/3/library/functions.html#int">int</a>, <a href="https://discordpy.readthedocs.io/en/stable/api.html#voicechannel">VoiceChannel</a>]) - The Voice Channel to create Voice Channel Activity Invite Link for.</li>
@@ -97,7 +97,7 @@
                     <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.APIException">APIException</a> - API is overloaded while creating Invite.</li>
                     <li class="atts-mts-rts"><a href="exceptions.html#dcactivity.errors.DCActivityException">DCActivityException</a> - Creating Invite link falied.</li>
                     <br><span class="bold class-info-text">Returns</span><br>
-                    <p class="atts-mts-rts">The Invite Link that was Created. - <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></p>
+                    <p class="atts-mts-rts">The Invite that was Created. - <a href="https://discordpy.readthedocs.io/en/stable/api.html#discord.Invite">Invite</a></p>
                 </div>
             </div>
             <div id="dcactivity.DCApplication">

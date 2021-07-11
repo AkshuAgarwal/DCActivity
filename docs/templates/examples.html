@@ -42,7 +42,7 @@
         </aside>
         <section id="main">
             <h1>Examples</h1>
-            <p>The following section outlines some helpful Examples to use DCavtivity module.</p>
+            <p>The following section outlines some helpful Examples to use DCActivity module.</p>
             <hr>
             <br>
             <div id="examples.Client">
@@ -56,8 +56,8 @@ dcactivity = <span class="gr">DCActivity</span>(<span class="aq">client</span>)
 <span class="yl">@</span><span class="gr">client</span><span class="yl">.event</span>
 <span class="db">async def</span> <span class="yl">on_message</span>(<span class="aq">message</span>):
     <span class="do">if</span> <span class="aq">message</span>.content.startswith(<span class="ch">"!youtube"</span>):
-        <span class="aq">link</span> = <span class="do">await</span> dcactivity.create_link(<span class="aq">message.author.voice.channel</span>, <span class="gr">DCApplication</span>.youtube)
-        <span class="do">await</span> <span class="aq">message</span>.channel.send(<span class="aq">link</span>)
+        <span class="aq">invite</span> = <span class="do">await</span> dcactivity.create_invite(<span class="aq">message.author.voice.channel</span>, <span class="gr">DCApplication</span>.youtube)
+        <span class="do">await</span> <span class="aq">message</span>.channel.send(<span class="aq">invite</span>)
 
 <span class="aq">client</span>.run(<span class="ch">"token"</span>)</code></pre>
             </div>
@@ -75,8 +75,8 @@ dcactivity = <span class="gr">DCActivity</span>(<span class="aq">bot</span>) <sp
 
 <span class="yl">@</span><span class="gr">client</span><span class="yl">.command</span>()
 <span class="db">async def</span> <span class="yl">youtube</span>(<span class="aq">ctx</span>, <span class="aq">channel</span>: <span class="gr">VoiceChannel</span>):
-    <span class="aq">link</span> = <span class="do">await</span> dcactivity.create_link(<span class="aq">channel</span>, <span class="gr">DCApplication</span>.youtube)
-    <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">link</span>)
+    <span class="aq">invite</span> = <span class="do">await</span> dcactivity.create_invite(<span class="aq">channel</span>, <span class="gr">DCApplication</span>.youtube)
+    <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">invite</span>)
 
 <span class="aq">bot</span>.run(<span class="ch">"token"</span>)</code></pre>
             </div>
@@ -124,9 +124,9 @@ dcactivity = <span class="gr">DCActivity</span>(<span class="aq">bot</span>) <sp
         <span class="do">else</span>:
             <span class="aq">_channel</span> = <span class="aq">channel</span>
 
-        <span class="aq">link</span> = <span class="do">await</span> <span class="aq">self</span>.<span class="aq">bot</span>.dcactivity.create_link(
+        <span class="aq">invite</span> = <span class="do">await</span> <span class="aq">self</span>.<span class="aq">bot</span>.dcactivity.create_invite(
             <span class="aq">_channel</span>, <span class="gr">DCApplication</span>.<span class="aq">youtube</span>, <span class="aq">max_age</span>=0, <span class="aq">max_users</span>=10)
-        <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">link</span>)
+        <span class="do">await</span> <span class="aq">ctx</span>.send(<span class="aq">invite</span>)
 
     <span class="yl">@youtube</span>.<span class="yl">error</span>
     <span class="db">async def</span> <span class="yl">youtube_error</span>(<span class="aq">self</span>, <span class="aq">ctx</span>, <span class="aq">exc</span>):
