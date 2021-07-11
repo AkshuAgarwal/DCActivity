@@ -1,6 +1,14 @@
+# Environment
+venv
+
 # Cache
 __pycache__
 *.pyc
 
 # IDE
 .vscode
+
+# Test Builds
+build
+*.egg-info
+dist

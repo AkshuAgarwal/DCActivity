@@ -7,7 +7,7 @@ dcactivity = DCActivity(bot) # or `bot.dcactivity = DCActivity(bot)` to use it a
 
 @bot.command()
 async def youtube(ctx, channel: VoiceChannel):
-    link = await dcactivity.create_link(channel, DCApplication.youtube)
-    await ctx.send(link)
+    invite = await dcactivity.create_invite(channel, DCApplication.youtube)
+    await ctx.send(invite)
 
 bot.run('token')

@@ -1,5 +1,3 @@
-<center>
-
 # DCActivity
 
 An unofficial module used to access Discord's Beta features like YouTube, Poker Night, etc. with your Bot
@@ -12,14 +10,30 @@ An unofficial module used to access Discord's Beta features like YouTube, Poker 
 ![](https://img.shields.io/pypi/dw/dcactivity)
 ![](https://img.shields.io/github/commit-activity/m/AkshuAgarwal/DCActivity)
 
-[Installation](#installation) • [Usage](#usage) • [Documentation](https://akshuagarwal.github.io/DCActivity/) • [License](LICENSE)
+[Features](https://github.com/AkshuAgarwal/DCActivity#features) • [Installation](https://github.com/AkshuAgarwal/DCActivity#installation) • [Usage](https://github.com/AkshuAgarwal/DCActivity#usage) • [Documentation](https://akshuagarwal.github.io/DCActivity/) • [License](https://github.com/AkshuAgarwal/DCActivity/blob/master/LICENSE)
 
-</center>
+<br>
+
+# Features
+
+* Super Easy to use!
+* Supports [discord.py](https://github.com/Rapptz/discord.py)
+* Better error handling with custom and discord.py's inbuilt Exceptions
+Type Hinting and proper Documentation
+* [discord.py](https://discordpy.readthedocs.io/en/stable) like Docs making it easy to read the docs for existing discord.py users</li>
+Supports [Logging](https://docs.python.org/3/library/logging.html)
+
+Currently Supported Applications are:
+* YouTube Together (youtube)
+* CG 2 DEV (chess)
+* Betrayal.io (betrayal)
+* Poker Night (poker)
+* Fishington.io (fishing)
 
 <br>
 
 # Installation
-- **Python 3.8 or higher is required**
+- **Python 3.6 or higher is required**
 - **[*discord.py*](https://github.com/Rapptz/discord.py) V1.5.0 or higher is required**
 
 To install the library, simply run the following command in your terminal:
@@ -56,12 +70,12 @@ link = await bot.dcactivity.create_link(voice_channel, app_id)
     ```python
     from dcactivity import DCApplication
 
-    link = await bot.dcactivity.create_link(voice_channel, DCApplication.youtube) # or DCApplication.poker, etc.
+    invite = await bot.dcactivity.create_invite(voice_channel, DCApplication.youtube) # or DCApplication.poker, etc.
     ```
 
   * Directly use Application Name or ID (use ID only if you know the exact ID of an activity):
     ```python
-    link = await bot.dcactivity.create_link(voice_channel, 'youtube') # or poker, chess, etc.
+    invite = await bot.dcactivity.create_invite(voice_channel, 'youtube') # or poker, chess, etc.
     ```
 
 
@@ -79,8 +93,8 @@ dcactivity = DCActivity(bot) # or "bot.dcactivity = DCActivity(bot)" to use it a
 
 @bot.command()
 async def youtube(ctx, channel: VoiceChannel):
-    link = await dcactivity.create_link(channel, DCApplication.youtube)
-    await ctx.send(link)
+    invite = await dcactivity.create_invite(channel, DCApplication.youtube)
+    await ctx.send(invite)
 
 bot.run('token')
 ```
@@ -120,8 +134,8 @@ bot.run('token')
           
           @commands.command()
           async def youtube(self, ctx, channel: VoiceChannel):
-              link = await self.bot.dcactivity.create_link(channel, DCApplication.youtube)
-              await ctx.send(link)
+              invite = await self.bot.dcactivity.create_invite(channel, DCApplication.youtube)
+              await ctx.send(invite)
 
       def setup(bot):
           bot.add_cog(MyCog(bot))
@@ -153,9 +167,9 @@ bot.run('token')
               else:
                   _channel = channel
               
-              link = await self.bot.dcactivity.create_link(
+              invite = await self.bot.dcactivity.create_invite(
                   _channel, DCApplication.youtube, max_age=0, max_uses=10)
-              await ctx.send(link)
+              await ctx.send(invite)
 
           @custom_link.error
           async def custom_link_error(self, ctx, exc):
